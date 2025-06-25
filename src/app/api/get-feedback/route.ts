@@ -1,22 +1,14 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.SUPABASE_URL!;
-const supabaseKey = process.env.SUPABASE_KEY!;
-const supabase = createClient(supabaseUrl, supabaseKey);
-
-export const dynamic = 'force-dynamic';
+const supabase = createClient(
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_KEY!
+);
 
 export async function GET() {
-  const { data, error } = await supabase
-    .from('feedback')
-    .select('*')
-    .order('created_at', { ascending: false });
+  const { data, error } = await supabase.from('feedback').select('*');
 
-  if (error) {
-    return new Response(JSON.stringify({ error }), { status: 500 });
-  }
-
-  return new Response(JSON.stringify(data), {
-    headers: { 'Content-Type': 'application/json' },
+  return new Response(JSON.stringify({ data, error }), {
+    status: error ? 500 : 200,
   });
 }

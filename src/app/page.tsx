@@ -15,9 +15,7 @@ export default function HomePage() {
 
     const response = await fetch('/api/ai-feedback', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ improvement, strengths, weaknesses }),
     });
 
@@ -27,31 +25,29 @@ export default function HomePage() {
   };
 
   return (
-    <main className="relative min-h-screen p-4 flex items-center justify-center">
-      {/* 🔳 Valfri mörk overlay (kan kommenteras bort) */}
-      <div className="absolute inset-0 bg-black opacity-40 z-0" />
+    <main className="min-h-screen p-4 flex items-center justify-center">
+      <div className="w-full max-w-xl bg-white bg-opacity-90 backdrop-blur-md p-6 rounded-2xl shadow-lg space-y-4 sm:space-y-6">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800">GreenGolf AI Coach</h2>
 
-      {/* 🧾 Själva formuläret */}
-      <div className="relative z-10 w-full max-w-xl bg-white bg-opacity-80 backdrop-blur-md p-6 rounded-2xl shadow-lg">
-        <h2 className="text-2xl font-bold mb-4 text-center text-gray-800 drop-shadow-md">
-          GreenGolf AI Coach
-        </h2>
-
-        <div className="mb-4">
-          <label className="block mb-1 font-medium text-gray-700">What do you want to improve?</label>
+        <div>
+          <label className="block mb-1 font-medium text-gray-700 text-sm sm:text-base">
+            What do you want to improve?
+          </label>
           <input
             type="text"
-            className="w-full p-3 border rounded-lg"
+            className="w-full p-3 border rounded-lg text-sm sm:text-base"
             placeholder="e.g., shoot straighter"
             value={improvement}
             onChange={(e) => setImprovement(e.target.value)}
           />
         </div>
 
-        <div className="mb-4">
-          <label className="block mb-1 font-medium text-gray-700">Your Strengths</label>
+        <div>
+          <label className="block mb-1 font-medium text-gray-700 text-sm sm:text-base">
+            Your Strengths
+          </label>
           <textarea
-            className="w-full p-3 border rounded-lg"
+            className="w-full p-3 border rounded-lg text-sm sm:text-base"
             rows={2}
             value={strengths}
             onChange={(e) => setStrengths(e.target.value)}
@@ -59,10 +55,12 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="mb-4">
-          <label className="block mb-1 font-medium text-gray-700">Your Weaknesses</label>
+        <div>
+          <label className="block mb-1 font-medium text-gray-700 text-sm sm:text-base">
+            Your Weaknesses
+          </label>
           <textarea
-            className="w-full p-3 border rounded-lg"
+            className="w-full p-3 border rounded-lg text-sm sm:text-base"
             rows={2}
             value={weaknesses}
             onChange={(e) => setWeaknesses(e.target.value)}
@@ -72,17 +70,19 @@ export default function HomePage() {
 
         <button
           onClick={handleSubmit}
-          className="w-full py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+          className="w-full py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-sm sm:text-base"
         >
           Get AI Feedback and Tips
         </button>
 
         {loading && (
-          <p className="mt-4 text-center text-gray-500">Loading AI feedback...</p>
+          <p className="text-center text-gray-500 text-sm sm:text-base">
+            Loading AI feedback...
+          </p>
         )}
 
         {aiFeedback && !loading && (
-          <div className="mt-6 p-4 bg-gray-100 rounded-xl text-gray-800 whitespace-pre-wrap">
+          <div className="p-4 bg-gray-100 rounded-xl text-gray-800 whitespace-pre-wrap text-sm sm:text-base">
             {aiFeedback}
           </div>
         )}

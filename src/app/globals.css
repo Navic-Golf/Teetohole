@@ -11,6 +11,7 @@
     --foreground: #ededed;
   }
 }
+
 body {
   background-image: url("/images/golf-bg.jpg");
   background-size: cover;

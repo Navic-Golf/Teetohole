@@ -27,9 +27,15 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 p-4">
-      <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-lg">
-        <h2 className="text-2xl font-bold mb-4 text-center">GreenGolf AI Coach</h2>
+    <main className="relative min-h-screen p-4 flex items-center justify-center">
+      {/* 🔳 Valfri mörk overlay (kan kommenteras bort) */}
+      <div className="absolute inset-0 bg-black opacity-40 z-0" />
+
+      {/* 🧾 Själva formuläret */}
+      <div className="relative z-10 w-full max-w-xl bg-white bg-opacity-80 backdrop-blur-md p-6 rounded-2xl shadow-lg">
+        <h2 className="text-2xl font-bold mb-4 text-center text-gray-800 drop-shadow-md">
+          GreenGolf AI Coach
+        </h2>
 
         <div className="mb-4">
           <label className="block mb-1 font-medium text-gray-700">What do you want to improve?</label>
